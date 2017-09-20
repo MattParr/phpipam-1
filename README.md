@@ -1,8 +1,13 @@
 # docker-phpipam
 
-phpIPAM is an open-source web IP address management application. Its goal is to provide light and simple IP address management application.
+phpIPAM is an open-source web IP address management application. 
+Its goal is to provide light and simple IP address management application.
 
 phpIPAM is developed and maintained by Miha Petkovsek, released under the GPL v3 license, project source is [here](https://github.com/phpipam/phpipam)
+
+Please note.  This build currently builds phpipam from a fork located [here] (https://github.com/MattParr/phpipam) 
+for sensible SAML defaults
+
 
 Learn more on [phpIPAM homepage](http://phpipam.net)
 
@@ -23,7 +28,7 @@ Here, we store data on the host system under `/my_dir/phpipam` and use a specifi
 ### Phpipam 
 
 ```bash
-$ docker run -ti -d -p 80:80 --name ipam --link phpipam-mysql:mysql pierrecdn/phpipam
+$ docker run -ti -d -p 80:80 --name ipam --link phpipam-mysql:mysql mpar/phpipam
 ```
 
 We are linking the two containers and expose the HTTP port. 
@@ -74,7 +79,7 @@ services:
   ipam:
     depends_on:
       - mysql
-    image: pierrecdn/phpipam
+    image: mpar/phpipam
     environment:
       - MYSQL_ENV_MYSQL_ROOT_PASSWORD=my-secret-pw
     ports:
@@ -109,4 +114,4 @@ The secret can be created by running `echo my-secret-pw | docker secret create p
 ### Notes
 
 phpIPAM is under heavy development by the amazing Miha. 
-To upgrade the release version, just change the `PHPIPAM_VERSION` environment variable to the target release (see [here](https://github.com/phpipam/phpipam/releases)) 
+To upgrade the release version, just change the `PHPIPAM_VERSION` environment variable to the target release (see [here](https://github.com/MattParr/phpipam-docker/releases)) 
