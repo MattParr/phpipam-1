@@ -5,7 +5,7 @@ Its goal is to provide light and simple IP address management application.
 
 phpIPAM is developed and maintained by Miha Petkovsek, released under the GPL v3 license, project source is [here](https://github.com/phpipam/phpipam)
 
-Please note.  This build currently builds phpipam from a fork located [here] (https://github.com/MattParr/phpipam) 
+Please note.  This build currently builds phpipam from a fork located [here](https://github.com/MattParr/phpipam) 
 for sensible SAML defaults
 
 
