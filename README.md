@@ -3,10 +3,11 @@
 phpIPAM is an open-source web IP address management application. 
 Its goal is to provide light and simple IP address management application.
 
-phpIPAM is developed and maintained by Miha Petkovsek, released under the GPL v3 license, project source is [here](https://github.com/phpipam/phpipam)
+phpIPAM is developed and maintained by Miha Petkovsek, released under the GPL v3
+ license, project source is [here](https://github.com/phpipam/phpipam)
 
-Please note.  This build currently builds phpipam from a fork located [here](https://github.com/MattParr/phpipam) 
-for sensible SAML defaults
+Please note.  This build uses a phpipam fork located 
+[here](https://github.com/MattParr/phpipam) for sensible SAML defaults
 
 
 Learn more on [phpIPAM homepage](http://phpipam.net)
@@ -20,10 +21,12 @@ Learn more on [phpIPAM homepage](http://phpipam.net)
 Run a MySQL database, dedicated to phpipam
 
 ```bash
-$ docker run --name phpipam-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /my_dir/phpipam:/var/lib/mysql -d mysql:5.6
+$ docker run --name phpipam-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw 
+-v /my_dir/phpipam:/var/lib/mysql -d mysql:5.6
 ```
 
-Here, we store data on the host system under `/my_dir/phpipam` and use a specific root password. 
+Here, we store data on the host system under `/my_dir/phpipam` and use a 
+specific root password. 
 
 ### Phpipam 
 
@@ -37,9 +40,11 @@ We are linking the two containers and expose the HTTP port.
 
 Regarding your requirements and docker setup, you've to expose resources. 
 
-For HTTPS, run a reverse-proxy in front of your phpipam container and link it to. 
+For HTTPS, run a reverse-proxy in front of your phpipam container and link it 
+to. 
 
-For multi-host containers, expose ports, run etcd or consul to make service discovery works etc. 
+For multi-host containers, expose ports, run etcd or consul to make service 
+discovery works etc. 
 
 ### Configuration 
 
@@ -109,9 +114,12 @@ services:
       - phpipam_mysql_root_password
 ```
 
-The secret can be created by running `echo my-secret-pw | docker secret create phpipam_mysql_root_password -`
+The secret can be created by running 
+`echo my-secret-pw | docker secret create phpipam_mysql_root_password -`
 
 ### Notes
 
 phpIPAM is under heavy development by the amazing Miha. 
-To upgrade the release version, just change the `PHPIPAM_VERSION` environment variable to the target release (see [here](https://github.com/MattParr/phpipam-docker/releases)) 
+To upgrade the release version, just change the `PHPIPAM_VERSION` environment 
+variable to the target release 
+(see [here](https://github.com/MattParr/phpipam-docker/releases)) 
