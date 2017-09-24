@@ -1,5 +1,5 @@
 FROM php:5.6-apache
-MAINTAINER Pierre Cheynier <pierre.cheynier@sfr.com>
+MAINTAINER Matt Parr <matt@parr.geek.nz>
 
 ENV PHPIPAM_SOURCE https://github.com/MattParr/phpipam.git
 ENV PHPIPAM_VERSION 1.3
@@ -31,9 +31,8 @@ RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd && \
 COPY php.ini /usr/local/etc/php/
 
 # clone phpipam sources and linked modules to web dir
-RUN git clone --depth=1 --recursive --branch ${PHPIPAM_VERSION} ${PHPIPAM_SOURCE} "${WEB_REPO}"
-RUN find "${WEB_REPO}" -name ".git" -exec rm -rf "{}" \;
-
+RUN git clone --depth=1 --recursive --branch ${PHPIPAM_VERSION} ${PHPIPAM_SOURCE} "${WEB_REPO}" \
+  && find "${WEB_REPO}" -name ".git" -exec rm -rf "{}" +
 # Use system environment variables into config.php
 RUN cp ${WEB_REPO}/config.dist.php ${WEB_REPO}/config.php && \
     sed -i -e "s/\['host'\] = 'localhost'/\['host'\] = 'mysql'/" \
